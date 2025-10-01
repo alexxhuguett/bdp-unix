@@ -10,3 +10,8 @@
 #   2 the     word
 #   2 the     copy
 
+fileIn="$1"
+tr '[:upper:]' '[:lower:]' < "$fileIn" \
+| tr -c '[:alnum:]' '\n' \
+| awk '{prev=word; word=$1; if (prev!="") print prev, word}' \
+| sort | uniq -c | sort -nr | head -n 5
