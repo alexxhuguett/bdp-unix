@@ -8,7 +8,7 @@ cd ./../data/planets || exit
 echo "-- Q1 --"
 # Write a pipline that for all planets that were discovered using Pulsar Timing displays the discovery year, name  and facility separated by spaces.
 # Example: 2017 PSR B0329+54 b Multiple Facilities
-pulsarTiming=$()
+pulsarTiming=$(grep 'Pulsar Timing' exoplanets |  awk -F',' '{print $6 $1 $7}')
 # Print pulsarTiming
 echo "Pulsar Timing:"
 echo "$pulsarTiming"
@@ -25,7 +25,7 @@ echo "$highestYear"
 # -- Q3 --
 echo "-- Q3 --"
 # Write a pipeline that counts the number of exoplanets discovered between 1997 and 2006
-intervalPlanets=$()
+intervalPlanets=$(awk -F',' '$6 > 1997 && $6 < 2006' exoplanets | wc -l)
 echo "Planets in interval:"
 echo "$intervalPlanets"
 
