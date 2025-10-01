@@ -18,7 +18,7 @@ echo "$mostCommonLetters"
 # Write a pipeline that finds the number of words in the book that have been used only once.
 # Your pipeline should be case insensitive
 echo "-- Q2 --"
-onlyOnce=$()
+onlyOnce=$(cat *.txt | tr '[:upper:]' '[:lower:]' | tr -c '[:alnum:]' '[\n*]' | sort | uniq -c | grep -E '^\s*1\s' | wc -l)                                # Count how many lines (words) there are
 echo "Words used only once:"
 echo "$onlyOnce"
 

@@ -18,7 +18,7 @@ echo "$pulsarTiming"
 echo "-- Q2 --"
 # Write a pipeline that finds the year in which most exoplanets were discovered. Also provide the number of planets discovered that year.
 # Example: 1505 2016
-highestYear=$()
+highestYear=$(awk -F',' '{print $6}' exoplanets | sort | uniq -c | sort -rn | head -n 1 | awk '{print $1, $2}')
 echo "Highest year:"
 echo "$highestYear"
 
@@ -31,9 +31,7 @@ echo "$intervalPlanets"
 
 # -- Q4 --
 echo "-- Q4 --"
-# Write a pipeline that outputs the names of two exoplanets that have the highest number of starts in the planetary system.
-highestStars=$()
-echo "Highest stars:"
+# Write a pipeline that outputs the names of two exoplanets that have the highest number of stars in the planetary system.
+highestStars=$(cat exoplanets | tail -n +2 | cut -d',' -f1,3 | sort -t',' -nr -k2 | head -n 2 | cut -d',' -f1)
 echo "$highestStars"
-
 cd ../../pipelines/ || exit
