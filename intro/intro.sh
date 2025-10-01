@@ -14,14 +14,13 @@ cd ../data || exit
 echo "Moved from intro to the data folder"
 
 # The following line will execute the 'ls' command and save it in the variable lsOutput
-lsOutput=$()
+lsOutput=$(ls)
 # Then we can use echo to print the result
 echo "Result of ls"
 echo "$lsOutput"
 
-
 # Implement a command  that counts the number files  in the current directory.
-nmrOfFiles=$()
+nmrOfFiles=$(ls -1| wc -l)
 echo "Number of files"
 echo "$nmrOfFiles"
 
@@ -29,13 +28,13 @@ echo "$nmrOfFiles"
 # Do this by typing it between the brackets below.
 # You can first test individual commands by pasting them in the terminal.
 # (Make sure that you are in the correct directory if you want to test it)
-detailedLsOutput=$()
+detailedLsOutput=$(ls -l)
 # Prints the lsOutput
 echo "Files in directory:"
 echo "$detailedLsOutput"
 
 # Implement a command that gets all the lines that contain "#" from the 'exoplanets' file
-lines=$()
+lines=$(cd planets && grep '#' exoplanets)
 # Print result
 echo "Lines from exoplanets with '#'"
 echo "$lines"
@@ -51,7 +50,7 @@ ls | lolcat
 # The first part should take all the lines containing "2001" from the 'exoplanets' file.
 # The second part should only keeps the last 5 lines.
 # lastly we need to get the data that is before the first comma.
-firstPipeline=$()
+firstPipeline=$(cd planets && grep '2001' exoplanets | tail -5 | awk -F',' '{print $1}')
 echo "First pipeline results:"
 echo "$firstPipeline"
 
