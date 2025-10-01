@@ -9,7 +9,7 @@ echo "-- Q1 --"
 # Example output:
 # 309 e
 # 229 t
-mostCommonLetters=$()
+mostCommonLetters=$(cat * | tr -cd 'A-Za-z' | tr '[:upper:]' '[:lower:]' | fold -w1 | sort | uniq -c | sort -nr | head -n 10)
 # Prints the mostCommonLetters
 echo "Most common letters in my book:"
 echo "$mostCommonLetters"
