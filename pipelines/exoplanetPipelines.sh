@@ -25,7 +25,7 @@ echo "$highestYear"
 # -- Q3 --
 echo "-- Q3 --"
 # Write a pipeline that counts the number of exoplanets discovered between 1997 and 2006
-intervalPlanets=$(awk -F',' '$6 > 1997 && $6 < 2006' exoplanets | wc -l)
+intervalPlanets=$(cat exoplanets | tail -n +2 | awk -F',' '$6 >= 1997 && $6 <= 2006' | wc -l)
 echo "Planets in interval:"
 echo "$intervalPlanets"
 
